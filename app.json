@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "assetcrush-reactnative-sdk",
+    "slug": "assetcrush-reactnative-sdk",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "assetcrush-reactnative-sdk"
+}
