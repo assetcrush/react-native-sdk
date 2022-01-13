@@ -1,24 +1,40 @@
 {
-  "name": "assetcrush-reactnative-sdk",
-  "version": "1.0.0",
+  "name": "@fawazahmed/react-native-read-more",
+  "version": "0.0.1",
+  "description": "A simple react native library to show large blocks of text in a condensed manner with the ability to collapse and expand.",
   "main": "index.js",
   "scripts": {
-    "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "expo": "~44.0.2",
-    "expo-splash-screen": "~0.14.1",
-    "expo-status-bar": "~1.2.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3",
-    "react-native-web": "0.17.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk"
   },
-  "devDependencies": {
-    "@babel/core": "^7.12.9"
+  "keywords": [
+    "react-native-read-more",
+    "react-native-component",
+    "react-native",
+    "read",
+    "more",
+    "less",
+    "text",
+    "react",
+    "react native",
+    "mobile",
+    "ios",
+    "android",
+    "ui"
+  ],
+  "author": {
+    "name": "Fawaz Ahmed",
+    "email": "fawaz_ahmed@live.com"
   },
-  "private": true
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk/issues"
+  },
+  "homepage": "https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
