@@ -1,27 +1,30 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { Image } from "react-native";
 import { getKey } from "./key";
 
-const ImageResize = ({ url, width, height, ...props }) => {
-  const [image, setImage] = useState("");
+const ImageResize = ({ source, ...props }) => {
+  const [width, setWidth] = useState(0);
+  const [height, setheight] = useState(0);
   const key = getKey();
 
-  const imageUrl = `https://service.assetcrush.com?width=${
-    width || "auto"
-  }&height=${height || "auto"}&original_uri=${url}`;
+  const imageUrl =
+    width > 0 && height > 0
+      ? `https://service.assetcrush.com?width=${width || "auto"}&height=${
+          height || "auto"
+        }&original_uri=${source.uri}`
+      : "";
 
-  useEffect(() => {
-    fetch(imageUrl, { headers: { key } })
-      .then((r) => r.blob())
-      .then((d) => {
-        setImage(window.URL.createObjectURL(d));
-      });
+  const onLayout = useCallback((e) => {
+    props?.onLayout?.(e);
+
+    setWidth(e.nativeEvent.layout.width);
+    setheight(e.nativeEvent.layout.height);
   }, []);
 
   return (
     <Image
-      source={{ uri: url }}
-      style={{ width: width || "100%", height: height || "100%" }}
+      onLayout={onLayout}
+      source={{ uri: imageUrl, headers: { key } }}
       {...props}
     />
   );
