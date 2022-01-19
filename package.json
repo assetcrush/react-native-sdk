@@ -1,39 +1,27 @@
 {
-  "name": "@fawazahmed/react-native-read-more",
+  "name": "@assetcrush/react-native-sdk",
   "version": "0.0.1",
-  "description": "A simple react native library to show large blocks of text in a condensed manner with the ability to collapse and expand.",
+  "description": "A simple react native library to resize image on fly",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk"
+    "url": "git+https://github.com/assetcrush/react-native-sdk"
   },
   "keywords": [
-    "react-native-read-more",
-    "react-native-component",
-    "react-native",
-    "read",
-    "more",
-    "less",
-    "text",
-    "react",
-    "react native",
-    "mobile",
-    "ios",
-    "android",
-    "ui"
+    ""
   ],
   "author": {
-    "name": "Fawaz Ahmed",
-    "email": "fawaz_ahmed@live.com"
+    "name": "assetcrush",
+    "email": "dev@assetcrush.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk/issues"
+    "url": "https://github.com/assetcrush/react-native-sdk/issues"
   },
-  "homepage": "https://github.com/fawaz-ahmed/asset-crush-reactjs-sdk#readme",
+  "homepage": "https://github.com/assetcrush/react-native-sdk#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }
