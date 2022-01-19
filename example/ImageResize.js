@@ -7,11 +7,13 @@ const ImageResize = ({ source, ...props }) => {
   const [height, setheight] = useState(0);
   const key = getKey();
 
+  const newSource = { ...source, headers: { ...source?.headers, key } };
+
   const imageUrl =
-    width > 0 && height > 0
+    width > 0 && height > 0 && newSource.uri
       ? `https://service.assetcrush.com?width=${width || "auto"}&height=${
           height || "auto"
-        }&original_uri=${source.uri}`
+        }&original_uri=${newSource.uri}`
       : "";
 
   const onLayout = useCallback((e) => {
@@ -21,10 +23,12 @@ const ImageResize = ({ source, ...props }) => {
     setheight(e.nativeEvent.layout.height);
   }, []);
 
+  console.log({ ...newSource, uri: imageUrl });
+
   return (
     <Image
       onLayout={onLayout}
-      source={{ uri: imageUrl, headers: { key } }}
+      source={{ ...newSource, uri: imageUrl }}
       {...props}
     />
   );
