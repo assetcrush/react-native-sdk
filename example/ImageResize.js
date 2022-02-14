@@ -13,7 +13,7 @@ const ImageResize = ({ source, ...props }) => {
     width > 0 && height > 0 && newSource.uri
       ? `https://service.assetcrush.com?width=${width || "auto"}&height=${
           height || "auto"
-        }&original_uri=${newSource.uri}`
+        }&original_uri=${encodeURIComponent(newSource.uri)}`
       : "";
 
   const onLayout = useCallback((e) => {
@@ -22,8 +22,6 @@ const ImageResize = ({ source, ...props }) => {
     setWidth(e.nativeEvent.layout.width);
     setheight(e.nativeEvent.layout.height);
   }, []);
-
-  console.log({ ...newSource, uri: imageUrl });
 
   return (
     <Image

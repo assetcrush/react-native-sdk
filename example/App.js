@@ -10,7 +10,6 @@ export default function App() {
       source={{
         uri: "https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159__340.jpg",
         headers: { auth: "ali" },
-        // uri: null,
       }}
       style={{ width: 300, height: 300 }}
     />
