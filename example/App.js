@@ -9,7 +9,7 @@ export default function App() {
     <ImageResize
       source={{
         uri: "https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159__340.jpg",
-        headers: { auth: "ali" },
+        headers: { auth: "test-auth" },
       }}
       style={{ width: 300, height: 300 }}
     />
