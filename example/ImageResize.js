@@ -3,11 +3,14 @@ import { Image } from "react-native";
 import { getKey } from "./key";
 
 const ImageResize = ({ source, ...props }) => {
-  const [width, setWidth] = useState(0);
-  const [height, setheight] = useState(0);
+  const [width, setWidth] = useState(100);
+  const [height, setheight] = useState(100);
   const key = getKey();
 
-  const newSource = { ...source, headers: { ...source?.headers, key } };
+  const newSource = {
+    ...source,
+    headers: { ...source?.headers, "assetcrush-key": key },
+  };
 
   const imageUrl =
     width > 0 && height > 0 && newSource.uri
@@ -16,12 +19,15 @@ const ImageResize = ({ source, ...props }) => {
         }&original_uri=${encodeURIComponent(newSource.uri)}`
       : "";
 
-  const onLayout = useCallback((e) => {
-    props?.onLayout?.(e);
+  const onLayout = useCallback(
+    (e) => {
+      props?.onLayout?.(e);
 
-    setWidth(e.nativeEvent.layout.width);
-    setheight(e.nativeEvent.layout.height);
-  }, []);
+      setWidth(e.nativeEvent.layout.width);
+      setheight(e.nativeEvent.layout.height);
+    },
+    [setWidth, setheight]
+  );
 
   return (
     <Image
