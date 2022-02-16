@@ -3,8 +3,8 @@ import { Image } from "react-native";
 import { getKey } from "./key";
 
 const ImageResize = ({ source, ...props }) => {
-  const [width, setWidth] = useState(100);
-  const [height, setheight] = useState(100);
+  const [width, setWidth] = useState(0);
+  const [height, setheight] = useState(0);
   const key = getKey();
 
   const newSource = {
