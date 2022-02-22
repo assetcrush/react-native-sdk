@@ -1,7 +1,5 @@
 ![NPM License](https://img.shields.io/npm/l/@assetcrush/react-native-sdk) ![NPM Version](https://img.shields.io/npm/v/@assetcrush/react-native-sdk)
 
-#### Please :star: it, thanks :thumbsup:
-
 # assetcrush
 
 A simple react-native library to resize image on fly.
