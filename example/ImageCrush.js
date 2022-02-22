@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from "react";
 import { Image } from "react-native";
 import { getKey } from "./key";
 
-const ImageResize = ({ source, ...props }) => {
+const ImageCrush = ({ source, ...props }) => {
   const [width, setWidth] = useState(0);
   const [height, setheight] = useState(0);
   const key = getKey();
@@ -32,4 +32,4 @@ const ImageResize = ({ source, ...props }) => {
   );
 };
 
-export default memo(ImageResize);
+export default memo(ImageCrush);
