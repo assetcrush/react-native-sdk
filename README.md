@@ -8,7 +8,7 @@ A simple react-native library to resize image on fly.
 
 ## What is assetcrush ?
 
-assetcrush is an image resize service for on the fly dynamic resize. If
+[assetcrush](https://assetcrush.com/) is an image resize service for on the fly dynamic resize. If
 your users are uploading images of various sizes and then you are
 consuming those images on different devices then this service is ideal
 for your use. Since every device has different dimensions our sdk will
