@@ -7,3 +7,10 @@ node_modules
 
 # Runtime data
 tmp
+
+example/
+.github/
+.gitignore
+babel.config.js
+yarn.lock
+package-lock.json
