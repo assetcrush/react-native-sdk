@@ -44,8 +44,7 @@ export default function App() {
   return (
     <ImageCrush
       source={{
-        uri: "https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159__340.jpg",
-        headers: { auth: "test-auth" },
+        uri: "https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159__340.jpg"
       }}
       style={styles.image}
     />
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
 
 | Prop     | Type     | Required | Note                                         |
 | -------- | -------- | -------- | -------------------------------------------- |
-| `source` | `object` | yes      | object that is passes in <Image source={} /> |
+| `source` | `object` | yes      | source object should contain uri             |
 | `style`  | `object` | no       | style object                                 |
 
 Any additional props are passed down to underlying `<Image />` element.

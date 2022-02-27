@@ -53,3 +53,7 @@ buck-out/
 .expo/
 web-build/
 dist/
+
+yarn.lock
+package-lock.json
+ios/Podfile.lock
