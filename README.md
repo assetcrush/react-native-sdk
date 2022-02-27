@@ -34,8 +34,7 @@ yarn add @assetcrush/react-native-sdk
 ```javascript
 import React from "react";
 import { StyleSheet } from "react-native";
-import ImageCrush from "./ImageCrush";
-import { setKey } from "./key";
+import { ImageCrush, setKey } from '@assetcrush/react-native-sdk';
 
 // replace test-key with your assetcrush key
 setKey("test-key");
