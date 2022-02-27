@@ -1,6 +1,6 @@
 {
   "name": "@assetcrush/react-native-sdk",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A simple react native library to resize image on fly",
   "main": "dist/index.js",
   "types": "index.d.ts",
