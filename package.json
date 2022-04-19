@@ -1,17 +1,28 @@
 {
   "name": "@assetcrush/react-native-sdk",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "A simple react native library to resize image on fly",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel example/lib/** -d ./dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/assetcrush/react-native-sdk"
   },
   "keywords": [
-    ""
+    "react-native",
+    "react",
+    "assetcrush",
+    "resize",
+    "image-resize",
+    "image",
+    "assets",
+    "on-the-fly",
+    "javascript",
+    "typescript"
   ],
   "author": {
     "name": "assetcrush",
@@ -21,8 +32,17 @@
   "bugs": {
     "url": "https://github.com/assetcrush/react-native-sdk/issues"
   },
-  "homepage": "https://github.com/assetcrush/react-native-sdk#readme",
+  "homepage": "https://assetcrush.com/en/docs/reactnative-sdk",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "metro-react-native-babel-preset": "^0.68.0"
   }
 }
