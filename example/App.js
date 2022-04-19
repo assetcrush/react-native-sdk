@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import ImageResize from "./ImageResize";
 import { setKey } from "./key";
 
 // replace test-key with your assetcrush key
-setKey("test-key");
+setKey("1234");
 
 export default function App() {
   return (
@@ -14,6 +14,7 @@ export default function App() {
           uri: "https://cdn.pixabay.com/photo/2021/12/11/07/59/hotel-6862159__340.jpg",
         }}
         style={styles.image}
+        reloadIconColor={'red'}
       />
     </View>
   );
