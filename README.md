@@ -61,6 +61,13 @@ const styles = StyleSheet.create({
 | -------- | -------- | -------- | -------------------------------------------- |
 | `source` | `object` | yes      | source object should contain uri             |
 | `style`  | `object` | no       | style object                                 |
+| `spinnerIcon`  | `element` | no       | Custom Reactative element for loading                                 |
+| `reloadIcon`  | `element` | no       | Custom Reactative element for retry                                 |
+| `spinnerColor`  | `string` | no       | Custom color for loading                                 |
+| `hideSpinner`  | `bool` | no       | Show or hide loading                                 |
+| `onError`  | `func` | no       | If image fails to load                                 |
+| `onLoad`  | `func` | no       | When image loads successfully                                 |
+| `acEnv`  | `string` | no       | Envoirment of the compoent                                 |
 
 Any additional props are passed down to underlying `<Image />` element.
 
