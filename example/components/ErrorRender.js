@@ -2,11 +2,11 @@ import { Text, TouchableOpacity } from "react-native";
 import React, { useCallback, useRef } from "react";
 
 export const ErrorRender = ({
-  handleRetry = () => { },
+  handleRetry = () => {},
   icon: Icon,
   height,
+  width,
 }) => {
-
   const handler = useRef();
 
   const _handleRetry = useCallback(() => {
@@ -17,8 +17,22 @@ export const ErrorRender = ({
 
   return (
     <TouchableOpacity onPress={_handleRetry}>
-      {Icon ||
-        <Text style={{ fontSize: height / 2 < 50 ? height / 2 : 50 }}>🔄</Text>}
+      {Icon || (
+        <Text
+          style={{
+            fontSize:
+              width < height
+                ? height / 2 < 50
+                  ? height / 2
+                  : 50
+                : width / 2 < 50
+                ? width / 2
+                : 50,
+          }}
+        >
+          🔄
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

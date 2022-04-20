@@ -1,25 +1,24 @@
-import React, { memo, useCallback, useState } from 'react';
-import { ActivityIndicator, Image, ImagePropTypes, View } from 'react-native';
-import { ErrorRender } from '../components/ErrorRender';
-import { getKey } from './key';
+import React, { memo, useCallback, useRef, useState } from "react";
+import { ActivityIndicator, Image, ImagePropTypes, View } from "react-native";
+import { ErrorRender } from "../components/ErrorRender";
+import { getKey } from "./key";
 
-const ImageCrush = (props) => {
-
-  const {
-    reloadIcon,
-    spinnerIcon,
-    spinnerColor = 'gray',
-    hideSpinner = false,
-    onError = () => null,
-    onLoad = () => null,
-    acEnv = "production",
-  } = props
+const ImageCrush = ({
+  reloadIcon,
+  spinnerIcon,
+  spinnerColor = "gray",
+  hideSpinner = false,
+  onError = () => null,
+  onLoad = () => null,
+  acEnv = "production",
+  ...props
+}) => {
   const [width, setWidth] = useState(0);
   const [height, setheight] = useState(0);
   const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [componentKey, setComponentKey] = useState(0)
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [componentKey, setComponentKey] = useState(0);
+  const handler = useRef();
 
   const handleError = (e) => {
     onError(e);
@@ -33,15 +32,34 @@ const ImageCrush = (props) => {
     setIsLoading(false);
   };
 
-  const handleLoad = () => setIsLoading(true);
+  const handleRetry = () => {
+    setComponentKey(componentKey + 1);
+    setIsLoading(true);
+  };
 
-  const handleRetry = () => setComponentKey(componentKey + 1);
+  const _onLayout = useCallback(
+    (e) => {
+      const layoutWidth = e?.nativeEvent?.layout?.width || 0;
+      const layoutHeight = e?.nativeEvent?.layout?.height || 0;
 
-  const onLayout = useCallback((e) => {
-    props?.onLayout?.(e);
-    setWidth(e.nativeEvent.layout.width);
-    setheight(e.nativeEvent.layout.height);
-  }, [setWidth, setheight]);
+      clearTimeout(handler.current);
+
+      handler.current = setTimeout(() => {
+        props?.onLayout?.(e);
+        setWidth(
+          width === 0 ? layoutWidth : width > layoutWidth ? layoutWidth : width
+        );
+        setheight(
+          height === 0
+            ? layoutHeight
+            : height > layoutHeight
+            ? layoutHeight
+            : height
+        );
+      }, 300);
+    },
+    [setWidth, setheight]
+  );
 
   let newSource = undefined;
   if (props.source?.uri) {
@@ -49,34 +67,37 @@ const ImageCrush = (props) => {
       ...props.source,
       headers: {
         ...(props.source?.headers || {}),
-        ['assetcrush-key']: getKey(),
-        ['ac-env']: acEnv
+        ["assetcrush-key"]: getKey(),
+        ["ac-env"]: acEnv,
       },
-      uri: width && height && props.source?.uri
-        ? `https://service.assetcrush.com?width=${width}&height=${height}&original_uri=${encodeURIComponent(props.source.uri)}`
-        : undefined
-    }
+      uri:
+        width && height && props.source?.uri
+          ? `https://service.assetcrush.com?width=${width}&height=${height}&original_uri=${encodeURIComponent(
+              props.source.uri
+            )}`
+          : undefined,
+    };
   }
 
   return (
     <>
       <Image
         {...props}
-        onLayout={onLayout}
+        onLayout={_onLayout}
         source={newSource || props.source}
         key={componentKey}
-        onLoadStart={handleLoad}
         onError={handleError}
         onLoad={handleOnLoad}
       />
-      {isLoading && !hideSpinner &&
-        <View style={{ position: 'absolute' }}>
-          {spinnerIcon ||
-            <ActivityIndicator color={spinnerColor} size={"large"} />}
+      {isLoading && !hideSpinner && (
+        <View style={{ position: "absolute", alignSelf: "center" }}>
+          {spinnerIcon || (
+            <ActivityIndicator color={spinnerColor} size={width > 100 ? "large" : "small"} />
+          )}
         </View>
-      }
-      {isError &&
-        <View style={{ position: 'absolute' }}>
+      )}
+      {isError && (
+        <View style={{ position: "absolute", alignSelf: "center" }}>
           <ErrorRender
             width={width}
             height={height}
@@ -84,7 +105,7 @@ const ImageCrush = (props) => {
             handleRetry={handleRetry}
           />
         </View>
-      }
+      )}
     </>
   );
 };
