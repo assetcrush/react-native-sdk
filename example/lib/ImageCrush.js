@@ -3,6 +3,7 @@ import { Image, ImagePropTypes } from 'react-native';
 import { getKey } from './key';
 
 const ImageCrush = (props) => {
+  const { acEnv = 'production' } = props;
   const [width, setWidth] = useState(0);
   const [height, setheight] = useState(0);
 
@@ -13,12 +14,14 @@ const ImageCrush = (props) => {
   }, [setWidth, setheight]);
 
   let newSource = undefined;
+  const key = getKey() ? getKey() : acEnv !== "production" ? 'test-key' : '';
   if (props.source?.uri) {
     newSource = {
       ...props.source,
       headers: {
         ...(props.source?.headers || {}),
-        ['assetcrush-key']: getKey()
+        ['assetcrush-key']: key,
+        'ac-env': acEnv
       },
       uri: width && height && props.source?.uri
         ? `https://service.assetcrush.com?width=${width}&height=${height}&original_uri=${encodeURIComponent(props.source.uri)}`
