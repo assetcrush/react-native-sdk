@@ -14,7 +14,12 @@ const ImageCrush = (props) => {
   }, [setWidth, setheight]);
 
   let newSource = undefined;
-  const key = getKey() ? getKey() : acEnv !== "production" ? 'test-key' : '';
+  const key = getKey() ? getKey() : process.env.NODE_ENV === "development" ? 'test-key' : '';
+
+  if (process.env.NODE_ENV === "development" && key === '') {
+    console.log(' Key is not present, please go to console.assetcrush.com and sign up to get one.')
+  }
+  
   if (props.source?.uri) {
     newSource = {
       ...props.source,
