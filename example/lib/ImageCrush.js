@@ -62,12 +62,18 @@ const ImageCrush = ({
   );
 
   let newSource = undefined;
+  const key = getKey() ? getKey() : __DEV__ === "development" ? 'test-key' : '';
+
+  if (__DEV__ === "development" && key === '') {
+    console.log(' Key is not present, please go to console.assetcrush.com and sign up to get one.')
+  }
+  
   if (props.source?.uri) {
     newSource = {
       ...props.source,
       headers: {
         ...(props.source?.headers || {}),
-        ["assetcrush-key"]: getKey(),
+        ['assetcrush-key']: key,
         ["ac-env"]: acEnv,
       },
       uri:
