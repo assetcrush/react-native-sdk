@@ -64,7 +64,7 @@ const ImageCrush = ({
   let newSource = undefined;
   const key = getKey() ? getKey() : __DEV__ === "development" ? 'test-key' : '';
 
-  if (__DEV__ !== "development" && key === '') {
+    if (__DEV__ === "development" && !getKey()) {
     console.log(' Key is not present, please go to console.assetcrush.com and sign up to get one.')
   }
   
