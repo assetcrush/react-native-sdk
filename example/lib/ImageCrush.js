@@ -14,9 +14,9 @@ const ImageCrush = (props) => {
   }, [setWidth, setheight]);
 
   let newSource = undefined;
-  const key = getKey() ? getKey() : process.env.NODE_ENV === "development" ? 'test-key' : '';
+  const key = getKey() ? getKey() : __DEV__ === "development" ? 'test-key' : '';
 
-  if (process.env.NODE_ENV === "development" && key === '') {
+  if (__DEV__ === "development" && key === '') {
     console.log(' Key is not present, please go to console.assetcrush.com and sign up to get one.')
   }
   
