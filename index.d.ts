@@ -7,11 +7,7 @@ export interface ImageCrushProps extends ImageProps {
 
 declare const ImageCrush: React.FC<ImageCrushProps>;
 
-export interface setKeyInterface {
-  key: string
-}
-
-declare const setKey: setKeyInterface
+declare const setKey: (key: string) => void;
 
 export {
   ImageCrush,
